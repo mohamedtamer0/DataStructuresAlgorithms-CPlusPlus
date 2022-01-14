@@ -65,6 +65,18 @@ public:
         }
     }
 
+    void Insert(int index, int newitem) {
+        if (index >= 0 && index < size) {
+            for (int i = length; i > index; i--) {
+                items[i] = items[i - 1];
+            }
+            items[index] = newitem;
+            length++;
+        } else {
+            cout << "Error - Index out of Range \n";
+        }
+    }
+
 };
 
 
@@ -90,6 +102,14 @@ int main() {
     cin >> newitem;
     myarray.Append(newitem);
     myarray.Display();
+
+
+    cout << "Enter Index and Item \n";
+    cin >> index;
+    cin >> newitem;
+    myarray.Insert(index, newitem);
+    myarray.Display();
+    cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
 
 
 }
