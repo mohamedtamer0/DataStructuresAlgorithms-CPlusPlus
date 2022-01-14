@@ -44,6 +44,18 @@ public:
     int getLength() {
         return length;
     }
+
+    int Search(int key) {
+        int index = -1;
+        for (int i = 0; i < length; i++) {
+            if (items[i] == key) {
+                index = i;
+                break;
+            }
+            return index;
+        }
+    }
+
 };
 
 
@@ -54,6 +66,15 @@ int main() {
     cin >> arraysize;
     Array myarray(arraysize);
     myarray.Fill();
-    cout << "Array size =" << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
+    cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
     myarray.Display();
+    cout << "Enter the value to search for \n";
+    int key;
+    cin >> key;
+    int index = myarray.Search(key);
+    if (index == -1) {
+        cout << "Item Not Found \n";
+    }
+
+
 }
