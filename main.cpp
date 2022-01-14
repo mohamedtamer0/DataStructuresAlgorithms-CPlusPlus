@@ -77,6 +77,17 @@ public:
         }
     }
 
+    void Delete(int index) {
+        if (index >= 0 && index < size) {
+            for (int i = index; i < length - 1; i++) {
+                items[i] = items[i + 1];
+                length--;
+            }
+        } else {
+            cout << "Index out of Array Range \n";
+        }
+    }
+
 };
 
 
@@ -112,4 +123,9 @@ int main() {
     cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
 
 
+    cout << "Enter Index to delete its Item \n";
+    cin >> index;
+    myarray.Delete(index);
+    myarray.Display();
+    cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
 }
