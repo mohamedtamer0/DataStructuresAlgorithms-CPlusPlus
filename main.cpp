@@ -56,6 +56,15 @@ public:
         }
     }
 
+    void Append(int newitem) {
+        if (length < size) {
+            items[length] = newitem;
+            length++;
+        } else {
+            cout << "Array is full\n";
+        }
+    }
+
 };
 
 
@@ -73,8 +82,14 @@ int main() {
     cin >> key;
     int index = myarray.Search(key);
     if (index == -1) {
-        cout << "Item Not Found \n";
+        cout << "Item is Found \n";
     }
+
+    int newitem;
+    cout << "Enter new item to add to the array \n";
+    cin >> newitem;
+    myarray.Append(newitem);
+    myarray.Display();
 
 
 }
