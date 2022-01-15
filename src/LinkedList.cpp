@@ -3,13 +3,12 @@
 using namespace std;
 
 
-class Node
-{
+class Node {
 public:
     int data;
-    Node* next;
-    Node()
-    {
+    Node *next;
+
+    Node() {
         data = 0;
         next = NULL;
     }
@@ -18,7 +17,7 @@ public:
 
 class Linkedlist {
 public:
-    Node* head;
+    Node *head;
 
     Linkedlist() {
         head = NULL;
@@ -30,7 +29,7 @@ public:
 
 
     void InsertFirst(int newvalue) {
-        Node* newnode= new Node();
+        Node *newnode = new Node();
         newnode->data = newvalue;
         if (isempty()) {
             newnode->next = NULL;
@@ -43,7 +42,7 @@ public:
 
 
     void display() {
-        Node* temp = head;
+        Node *temp = head;
         while (temp != NULL) {
             cout << temp->data << " ";
             temp = temp->next;
@@ -53,7 +52,7 @@ public:
 
     int count() {
         int counter = 0;
-        Node* temp = head;
+        Node *temp = head;
         while (temp != NULL) {
             counter++;
             temp = temp->next;
@@ -63,7 +62,7 @@ public:
 
     bool isfound(int key) {
         bool found = false;
-        Node* temp = head;
+        Node *temp = head;
         while (temp != NULL) {
             if (temp->data == key) {
                 found = true;
@@ -72,6 +71,26 @@ public:
         }
         return found;
     }
+
+
+    void insertbefore(int item, int newvalue) {
+
+        if (isfound(item)) {
+            Node *newnode = new Node();
+            newnode->data = newvalue;
+            Node *temp = head;
+            while (temp != NULL && temp->next->data != item) {
+                temp = temp->next;
+            }
+            newnode->next = temp->next;
+            temp->next = newnode;
+        } else {
+            cout << "Sorry , Item Not Found\n";
+        }
+
+
+    }
+
 
 };
 
@@ -105,8 +124,14 @@ int main() {
     cin >> item;
     if (lst.isfound(item)) {
         cout << "Item Found\n";
-    }else{
+    } else {
         cout << "Item not Found\n";
     }
 
+    int newvalue;
+    cout << "Enter Item and new value to insert\n";
+    cin >> item;
+    cin >> newvalue;
+    lst.insertbefore(item, newvalue);
+    lst.display();
 }
