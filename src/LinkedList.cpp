@@ -74,7 +74,9 @@ public:
 
 
     void insertbefore(int item, int newvalue) {
-
+        if (isempty()) {
+            InsertFirst(newvalue);
+        }
         if (isfound(item)) {
             Node *newnode = new Node();
             newnode->data = newvalue;
@@ -89,6 +91,22 @@ public:
         }
 
 
+    }
+
+
+    void append(int newvalue) {
+        if (isempty()) {
+            InsertFirst(newvalue);
+        } else {
+            Node *temp = head;
+            while (temp->next != NULL) {
+                temp = temp->next;
+            }
+            Node *newnode = new Node();
+            newnode->data = newvalue;
+            temp->next = newnode;
+            newnode->next = NULL;
+        }
     }
 
 
@@ -134,4 +152,12 @@ int main() {
     cin >> newvalue;
     lst.insertbefore(item, newvalue);
     lst.display();
+
+
+    cout << "Enter new value to append\n";
+    cin >> newvalue;
+    lst.append(newvalue);
+    lst.display();
+
+
 }
