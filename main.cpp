@@ -88,6 +88,38 @@ public:
         }
     }
 
+    void Enlarge(int newsize) {
+        if (newsize <= size) {
+            cout << "New size must be larger than current size \n";
+            return;
+        } else {
+            size = newsize;
+            int *old = items;
+            items = new int[newsize];
+            for (int i = 0; i < length; i++) {
+                items[i] = old[i];
+            }
+            delete[]old;
+        }
+    }
+
+    void Merge(Array other) {
+        int newsize = size + other.getSize();
+        size = newsize;
+        int *old = items;
+        items = new int[newsize];
+        int i;
+        for(i = 0; i < length; i++) {
+            items[i] = old[i];
+        }
+        delete[]old;
+        int j = i;
+        for(int i = 0; i < other.getLength(); i++) {
+            items[j++] = other.items[i];
+            length++;
+        }
+    }
+
 };
 
 
@@ -100,6 +132,8 @@ int main() {
     myarray.Fill();
     cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
     myarray.Display();
+
+
     cout << "Enter the value to search for \n";
     int key;
     cin >> key;
@@ -107,6 +141,7 @@ int main() {
     if (index == -1) {
         cout << "Item is Found \n";
     }
+
 
     int newitem;
     cout << "Enter new item to add to the array \n";
@@ -128,4 +163,18 @@ int main() {
     myarray.Delete(index);
     myarray.Display();
     cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
+
+
+    int newsize;
+    cout << "Enter New Size\n";
+    cin >> newsize;
+    myarray.Enlarge(newsize);
+    cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
+    myarray.Display();
+
+    Array other(3);
+    other.Fill();
+    myarray.Merge(other);
+    cout << "Array size = " << myarray.getSize() << " while length = " << myarray.getLength() << "\n";
+    myarray.Display();
 }
