@@ -7,7 +7,7 @@ class Array {
 private:
     int size;
     int length;
-    int *items;
+    int* items;
 public:
     Array(int arrsize) {
         size = arrsize;
@@ -95,7 +95,7 @@ public:
             return;
         } else {
             size = newsize;
-            int *old = items;
+            int* old = items;
             items = new int[newsize];
             for (int i = 0; i < length; i++) {
                 items[i] = old[i];
@@ -107,7 +107,7 @@ public:
     void Merge(Array other) {
         int newsize = size + other.getSize();
         size = newsize;
-        int *old = items;
+        int* old = items;
         items = new int[newsize];
         int i;
         for(i = 0; i < length; i++) {
