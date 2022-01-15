@@ -110,6 +110,27 @@ public:
     }
 
 
+    void Delete(int item) {
+        Node *delptr = head;
+        if (isempty()) {
+            cout << "List is empty , no items to delete \n";
+        }
+        if (head->data == item) {
+            head = head->next;
+            delete delptr;
+        } else {
+            Node *prev = NULL;
+            delptr = head;
+            while (delptr->data != item) {
+                prev = delptr;
+                delptr = delptr->next;
+            }
+            prev->next = delptr->next;
+            delete delptr;
+        }
+    }
+
+
 };
 
 
@@ -157,6 +178,12 @@ int main() {
     cout << "Enter new value to append\n";
     cin >> newvalue;
     lst.append(newvalue);
+    lst.display();
+
+
+    cout << "Enter new value to delete\n";
+    cin >> item;
+    lst.Delete(item);
     lst.display();
 
 
