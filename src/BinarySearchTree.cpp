@@ -89,6 +89,27 @@ public:
         }
     }
 
+    Node *Findmin(Node *r) {
+        if (r == NULL) {
+            return NULL;
+        } else if (r->left == NULL) {
+            return r;
+        } else {
+            return Findmin(r->left);
+        }
+    }
+
+    Node *Findmax(Node *r) {
+        if (r == NULL) {
+            return NULL;
+        } else if (r->right == NULL) {
+            return r;
+        } else {
+            return Findmax(r->right);
+        }
+    }
+
+
 };
 
 
@@ -121,6 +142,25 @@ int main() {
     } else {
         cout << "Sorry,Item Not Found\n";
     }
+
+    cout << "Find Minimum \n";
+    Node *min = btree.Findmin(btree.root);
+    if (min == 0) {
+        cout << "No Items Exist";
+    } else {
+        cout << "Minimum is " << min->data << "\n";
+    }
+
+    cout << "Find Maximum \n";
+    Node *max = btree.Findmax(btree.root);
+    if (max == 0) {
+        cout << "No Items Exist";
+    } else {
+        cout << "Maximum is " << max->data << "\n";
+    }
+
+
+
 
 
 }
