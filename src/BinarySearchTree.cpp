@@ -68,7 +68,29 @@ public:
     }
 
 
+    Node *Search(Node *r, int key) {
+        if (r == NULL) {
+            return NULL;
+        } else if (r->data == key) {
+            return r;
+        } else if (key < r->data) {
+            return Search(r->left, key);
+        } else {
+            return Search(r->right, key);
+        }
+    }
+
+    bool Search(int key) {
+        Node *result = Search(root, key);
+        if (result == NULL) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 };
+
 
 int main() {
     // 45,15,79,90,10,55,12,20,50
@@ -90,5 +112,15 @@ int main() {
     cout << "\n..............................................\n";
     btree.Postorder(btree.root);
     cout << "\n..............................................\n";
+
+    int key;
+    cout << "Enter item to search for \n";
+    cin >> key;
+    if (btree.Search(key)) {
+        cout << "Item Found \n";
+    } else {
+        cout << "Sorry,Item Not Found\n";
+    }
+
 
 }
