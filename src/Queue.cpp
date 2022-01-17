@@ -36,7 +36,17 @@ public:
             front = rear = newnode;
         } else {
             rear->next = newnode;
+            rear = newnode;
         }
+    }
+
+    void display() {
+        Node *temp = front;
+        while (temp != NULL) {
+            cout << " " << temp->data;
+            temp = temp->next;
+        }
+        cout << endl;
     }
 
 
@@ -44,5 +54,15 @@ public:
 
 
 int main() {
+    Queue q;
+    int item;
+
+    for (int i = 1; i <= 3; i++) {
+        cout << "Enter Item to Enqueue \n";
+        cin >> item;
+        q.Enqueue(item);
+    }
+    q.display();
+
 
 }
