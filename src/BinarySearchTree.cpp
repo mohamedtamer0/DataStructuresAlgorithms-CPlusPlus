@@ -109,6 +109,35 @@ public:
         }
     }
 
+    Node *Delete(Node *r, int key) {
+        if (r == NULL) {
+            return NULL; //Empty Tree
+        }
+        if (key < r->data) { // Ite, exists in left sub tree
+            r->left = Delete(r->left, key);
+        } else if (key > r->data) { // Ite, exists in right sub tree
+            r->right = Delete(r->right, key);
+        } else {
+            if (r->left == NULL && r->right == NULL) { // leaf node
+                r = NULL;
+            } else if (r->left != NULL && r->right == NULL) { // One child on the left
+                r->data = r->left->data;
+                delete r->left;
+                r->left = NULL;
+            } else if (r->left == NULL && r->right != NULL) { // one child on the right
+                r->data = r->right->data;
+                delete r->right;
+                r->right = NULL;
+            } else {
+                Node *max = Findmax(r->left);
+                r->data = max->data;
+                r->left = Delete(r->left, max->data);
+            }
+        }
+
+        return r;
+    }
+
 
 };
 
@@ -160,7 +189,14 @@ int main() {
     }
 
 
+    cout << "\n Delete Items \n";
+    Node *result = btree.Delete(btree.root, 12);
+    cout << "preorder After Delete 12 \n";
+    btree.Preorder(result);
 
+    result = btree.Delete(btree.root, 15);
+    cout <<"\n preorder After Delete 15 \n";
+    btree.Preorder(result);
 
 
 }
