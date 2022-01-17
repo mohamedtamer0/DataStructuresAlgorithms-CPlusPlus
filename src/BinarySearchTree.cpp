@@ -183,7 +183,7 @@ int main() {
     cout << "Find Maximum \n";
     Node *max = btree.Findmax(btree.root);
     if (max == 0) {
-        cout << "No Items Exist";
+        cout << "No Items Exist ";
     } else {
         cout << "Maximum is " << max->data << "\n";
     }
