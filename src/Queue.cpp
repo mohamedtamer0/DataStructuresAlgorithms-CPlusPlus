@@ -50,6 +50,61 @@ public:
     }
 
 
+    int Dequeue() {
+        int delvalue = -1;
+        if (isEmpty()) {
+            cout << "The queue is empty\n";
+        } else if (front == rear) {
+            delete front;
+            front = rear = NULL;
+        } else {
+            Node *delptr = front;
+            front = front->next;
+            delvalue = delptr->data;
+            delete delptr;
+        }
+        return delvalue;
+    }
+
+    int getFront() {
+        return front->data;
+    }
+
+    int getRear() {
+        return rear->data;
+    }
+
+
+    int count() {
+        int counter = 0;
+        Node *temp = front;
+        while (temp != NULL) {
+            counter++;
+            temp = temp->next;
+        }
+        return counter;
+    }
+
+    bool isFound(int item) {
+        bool found = false;
+        Node *temp = front;
+        while (temp != NULL) {
+            if (temp->data == item) {
+                found = true;
+                temp = temp->next;
+            }
+        }
+        return found;
+    }
+
+
+    void Clear() {
+        while (!isEmpty()) {
+            Dequeue();
+        }
+    }
+
+
 };
 
 
@@ -62,6 +117,19 @@ int main() {
         cin >> item;
         q.Enqueue(item);
     }
+    q.display();
+
+
+//    q.Dequeue();
+//    cout << "After dequeue one \n";
+//    q.display();
+//    q.Dequeue();
+//    cout << "After dequeue two \n";
+//    q.display();
+
+    cout << "Clear All items\n";
+    q.Clear();
+    cout << "Display after clear \n";
     q.display();
 
 
