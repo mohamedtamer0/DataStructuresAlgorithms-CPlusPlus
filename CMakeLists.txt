@@ -3,8 +3,10 @@ project(DataStructuresAlgorithms_C__)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(DataStructuresAlgorithms_C__ src/Array.cpp)
-add_executable(LinkedList src/LinkedList.cpp)
-add_executable(Stack src/Stack.cpp)
-add_executable(Queue src/Queue.cpp)
-add_executable(BinarySearchTree src/BinarySearchTree.cpp)
+add_executable(DataStructuresAlgorithms_C__ src/datastructures/Array.cpp)
+add_executable(LinkedList src/datastructures/LinkedList.cpp)
+add_executable(Stack src/datastructures/Stack.cpp)
+add_executable(Queue src/datastructures/Queue.cpp)
+add_executable(BinarySearchTree src/datastructures/BinarySearchTree.cpp)
+add_executable(LinearSearch src/algorithms/searching-algorithms/LinearSearch.cpp)
+
