@@ -12,3 +12,4 @@ add_executable(LinearSearch src/algorithms/searching-algorithms/LinearSearch.cpp
 add_executable(BinarySearch src/algorithms/searching-algorithms/BinarySearch.cpp)
 add_executable(BubbleSort src/algorithms/sorting-algorithms/BubbleSort.cpp)
 add_executable(SelectionSort src/algorithms/sorting-algorithms/SelectionSort.cpp)
+add_executable(InsertionSort src/algorithms/sorting-algorithms/InsertionSort.cpp)
