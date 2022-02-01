@@ -10,4 +10,4 @@ add_executable(Queue src/datastructures/Queue.cpp)
 add_executable(BinarySearchTree src/datastructures/BinarySearchTree.cpp)
 add_executable(LinearSearch src/algorithms/searching-algorithms/LinearSearch.cpp)
 add_executable(BinarySearch src/algorithms/searching-algorithms/BinarySearch.cpp)
-
+add_executable(BubbleSort src/algorithms/sorting-algorithms/BubbleSort.cpp)
