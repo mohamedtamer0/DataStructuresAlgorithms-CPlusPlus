@@ -48,8 +48,7 @@ void quickSort(int arr[], int low, int high) {
 
 
 /* Function to print an array */
-void printArray(int arr[], int size)
-{
+void printArray(int arr[], int size) {
     int i;
     for (i = 0; i < size; i++)
         cout << arr[i] << " ";
